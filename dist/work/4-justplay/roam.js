@@ -105,6 +105,10 @@ define(["require", "exports", "./sword", "./magicCube", "./newIsland", "./blocks
         '16' /*Shift*/: false,
         '69' /*E*/: false
     };
+    function setSpaceStatus(down) {
+        isKeyDown['32'] = down;
+    }
+    exports.setSpaceStatus = setSpaceStatus;
     var listenKeyboardFPV = function () {
         if (cameraMoveId == 0) {
             cameraMoveId = window.setInterval(moveCamera, INTERVAL);
@@ -124,7 +128,7 @@ define(["require", "exports", "./sword", "./magicCube", "./newIsland", "./blocks
             }
         };
     };
-    //判断互动时镜头朝向与距离是否正确
+    // 判断互动时镜头朝向与距离是否正确
     var isActing = function (actBox) {
         var lookat = exports.cameraFront;
         lookat = lookat.map(function (v) { return actDistance * v; });
